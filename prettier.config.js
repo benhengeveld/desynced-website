@@ -3,6 +3,7 @@ const config = {
 	plugins: ["prettier-plugin-tailwindcss"],
 	tabWidth: 4,
 	useTabs: true,
+	endOfLine: "lf",
 };
 
 export default config;
