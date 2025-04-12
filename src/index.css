@@ -2,6 +2,7 @@
 
 @theme {
 	--font-display: Inter, sans-serif;
+	--spacing-navbar: --spacing(14);
 }
 
 @layer base {
