@@ -11,6 +11,11 @@ export default antfu(
 			semi: true,
 			quotes: "double",
 		},
+		ignores: [
+			".pnpm-store/*",
+			".github/workflows/*.yml",
+			".github/workflows/*.yaml",
+		],
 	},
 	{
 		rules: {
