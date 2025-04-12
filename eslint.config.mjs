@@ -13,8 +13,10 @@ export default antfu(
 		},
 		ignores: [
 			".pnpm-store/*",
-			".github/workflows/*.yml",
-			".github/workflows/*.yaml",
+			".github/workflows/*[.yml,.yaml]",
+			"node_modules/*",
+			"dist/*",
+			"build/*",
 		],
 	},
 	{
