@@ -1,0 +1,39 @@
+{
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+	],
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"eslint.rules.customizations": [
+		{ "rule": "style/*", "severity": "off", "fixable": true },
+		{ "rule": "format/*", "severity": "off", "fixable": true },
+		{ "rule": "*-indent", "severity": "off", "fixable": true },
+		{ "rule": "*-spacing", "severity": "off", "fixable": true },
+		{ "rule": "*-spaces", "severity": "off", "fixable": true },
+		{ "rule": "*-order", "severity": "off", "fixable": true },
+		{ "rule": "*-dangle", "severity": "off", "fixable": true },
+		{ "rule": "*-newline", "severity": "off", "fixable": true },
+		{ "rule": "*quotes", "severity": "off", "fixable": true },
+		{ "rule": "*semi", "severity": "off", "fixable": true },
+		{ "rule": "prettier/*", "severity": "off", "fixable": true }
+	],
+	"css.lint.unknownAtRules": "ignore",
+}
