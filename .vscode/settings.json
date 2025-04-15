@@ -35,4 +35,5 @@
 		{ "rule": "*semi", "severity": "off", "fixable": true },
 		{ "rule": "prettier/*", "severity": "off", "fixable": true }
 	],
+	"css.lint.unknownAtRules": "ignore",
 }
