@@ -10,15 +10,18 @@ import NotFound from "@/pages/NotFound";
 import "@/index.css";
 import "@/styles/crt.css";
 
-createRoot(document.getElementById("root")!).render(
+const root = document.getElementById("root");
+if (!root) throw new Error("Root element not found");
+
+createRoot(root).render(
 	<BrowserRouter>
 		<Routes>
 			<Route element={<Navbar />}>
 				<Route index element={<HomePage />} />
-				<Route path="magic-prices" element={<MagicPricesPage />} />
-				<Route path="about" element={<AboutPage />} />
-				<Route path="*" element={<NotFound />} />
+				<Route element={<MagicPricesPage />} path="magic-prices" />
+				<Route element={<AboutPage />} path="about" />
+				<Route element={<NotFound />} path="*" />
 			</Route>
 		</Routes>
-	</BrowserRouter>,
+	</BrowserRouter>
 );

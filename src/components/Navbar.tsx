@@ -11,17 +11,17 @@ export default function Navbar() {
 		<>
 			<div className="h-navbar fixed inset-x-0 top-0 z-10 flex flex-row items-center bg-black/60 px-6 py-2 backdrop-blur">
 				<Link
-					to="/"
 					className="flex h-full flex-row items-center rounded px-2 text-2xl font-bold hover:bg-white/10"
+					to="/"
 				>
 					Sy_nc
 				</Link>
 				<nav className="flex h-full flex-row items-center">
-					{routes.map(route => (
+					{routes.map((route) => (
 						<Link
 							key={route.name}
-							to={route.path}
 							className="flex h-full min-w-16 flex-row items-center rounded px-2 font-medium hover:bg-white/10"
+							to={route.path}
 						>
 							{route.name}
 						</Link>
