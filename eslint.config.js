@@ -162,6 +162,16 @@ export default defineConfig([
 					],
 					pathGroups: [
 						{
+							pattern: "@/components/**",
+							group: "internal",
+							position: "before",
+						},
+						{
+							pattern: "@/pages/**",
+							group: "internal",
+							position: "before",
+						},
+						{
 							pattern: "@/**",
 							group: "internal",
 							position: "before",
