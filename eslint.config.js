@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import pluginQuery from "@tanstack/eslint-plugin-query";
 import { defineConfig } from "eslint/config";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
@@ -119,6 +120,8 @@ export default defineConfig([
 			},
 		},
 	},
+
+	...pluginQuery.configs["flat/recommended"],
 
 	// React Hooks
 	{
