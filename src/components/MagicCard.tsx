@@ -46,7 +46,22 @@ export default function MagicCard({
 		},
 	});
 
-	if (isLoading) return <div>Loading...</div>;
+	if (isLoading)
+		return (
+			<div className="flex flex-row gap-4 p-4 max-md:flex-col-reverse animate-pulse">
+				<div className="flex flex-1 flex-row items-center justify-end max-md:justify-start ">
+					<div className="max-h-175 max-w-125 w-120 h-170 rounded-3xl bg-white/10" />
+				</div>
+				<div className="flex-1">
+					<div className="flex flex-col gap-4 text-3xl">
+						<p className="bg-white/10 rounded-xl h-7.5 w-4/5" />
+						<p className="bg-white/10 rounded-xl h-7.5 w-4/5" />
+						<p className="bg-white/10 rounded-xl h-7.5 w-4/5" />
+						<p className="bg-white/10 rounded-xl h-7.5 w-7/10" />
+					</div>
+				</div>
+			</div>
+		);
 
 	if (error) {
 		const errorMessages: string[] = [];
@@ -65,8 +80,7 @@ export default function MagicCard({
 		}
 
 		return (
-			<div>
-				<h2>Errors:</h2>
+			<div className="flex flex-col gap-4 text-xl items-center p-4">
 				{errorMessages.map((error, index) => (
 					<p key={index}>{error}</p>
 				))}
@@ -74,33 +88,48 @@ export default function MagicCard({
 		);
 	}
 
-	if (!data) return <div>No data</div>;
+	if (!data) return <></>;
 
 	return (
-		<>
-			<pre>{JSON.stringify(data, null, 2)}</pre>
-			<div className="flex flex-row gap-2">
-				{!!data.image_uris && (
+		<div className="flex flex-row gap-4 p-4 max-md:flex-col-reverse">
+			<div className="flex flex-1 flex-row items-center justify-end max-md:justify-start">
+				{data.front_image_uris ? (
 					<img
-						alt="Magic Card"
-						className="w-96 rounded-3xl"
-						src={data.image_uris.normal}
+						alt={`Magic Card - ${data.name}`}
+						className="max-h-175 max-w-125 rounded-3xl"
+						src={data.front_image_uris.normal}
 					/>
+				) : (
+					<div className="max-h-175 max-w-125 w-120 h-170 rounded-3xl bg-white/10 flex justify-center items-center text-2xl">
+						No image
+					</div>
 				)}
-
-				{!!data.card_faces &&
-					data.card_faces.map((cardFace, index) => {
-						if (!cardFace.image_uris) return null;
-						return (
-							<img
-								key={index}
-								alt="Magic Card"
-								className="w-96 rounded-3xl"
-								src={cardFace.image_uris.normal}
-							/>
-						);
-					})}
 			</div>
-		</>
+			<div className="flex-1">
+				<div className="flex flex-col gap-4 text-3xl">
+					<p>
+						<b>Name:</b> {data.name}
+					</p>
+					<p>
+						<b>Set:</b> {data.set_name}
+					</p>
+					{!!data.prices.usd && (
+						<p>
+							<b>Normal:</b> ${data.prices.usd} USD
+						</p>
+					)}
+					{!!data.prices.usd_foil && (
+						<p>
+							<b>Foil:</b> ${data.prices.usd_foil} USD
+						</p>
+					)}
+					{!!data.prices.usd_etched && (
+						<p>
+							<b>Etched:</b> ${data.prices.usd_etched} USD
+						</p>
+					)}
+				</div>
+			</div>
+		</div>
 	);
 }

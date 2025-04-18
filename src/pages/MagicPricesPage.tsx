@@ -39,6 +39,7 @@ export default function MagicPricesPage() {
 					<input
 						autoComplete="off"
 						className="py-3 px-6 text-xl placeholder-neutral-400 focus:outline-none text-white flex-grow"
+						defaultValue={`${setCode ?? ""}${cardNumber ?? ""}`}
 						name="searchInput"
 						placeholder="Search"
 					/>

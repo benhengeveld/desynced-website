@@ -49,6 +49,30 @@ export default class ScryfallCard {
 		usd_etched: string | null;
 	};
 
+	get front_image_uris() {
+		if (this.image_uris) return this.image_uris;
+		if (
+			this.card_faces &&
+			this.card_faces.length >= 1 &&
+			this.card_faces[0].image_uris
+		)
+			return this.card_faces[0].image_uris;
+
+		return null;
+	}
+
+	get back_image_uris() {
+		if (this.image_uris) return null;
+		if (
+			this.card_faces &&
+			this.card_faces.length >= 2 &&
+			this.card_faces[1].image_uris
+		)
+			return this.card_faces[1].image_uris;
+
+		return null;
+	}
+
 	constructor(data: z.infer<typeof ScryfallCardSchema>) {
 		this.id = data.id;
 		this.name = data.name;
