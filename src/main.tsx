@@ -31,7 +31,7 @@ createRoot(root).render(
 						<Route index element={<HomePage />} />
 						<Route
 							element={<MagicPricesPage />}
-							path="magic-prices"
+							path="magic-prices/:setCode?/:cardNumber?"
 						/>
 						<Route element={<AboutPage />} path="about" />
 						<Route element={<NotFound />} path="*" />

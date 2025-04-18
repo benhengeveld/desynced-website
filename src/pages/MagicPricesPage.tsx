@@ -1,17 +1,22 @@
-import { useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet-async";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate, useParams } from "react-router";
 
 import MagicCard from "@/components/MagicCard";
 
 export default function MagicPricesPage() {
-	const [magicCardBase, SetMagicCardBase] = useState<{
-		setCode: string;
-		cardNumber: string;
-	} | null>(null);
+	const navigate = useNavigate();
 
-	const onFormSubmit = (formData: FormData) => {
-		const search = (formData.get("search") as string).trim();
+	const { setCode, cardNumber } = useParams();
+	const magicCardBase =
+		setCode && cardNumber ? { setCode, cardNumber } : null;
+
+	const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		const formData = new FormData(event.currentTarget);
+
+		const search = (formData.get("searchInput") as string).trim();
 
 		if (!search || search.length < 4) {
 			console.error("Invalid search");
@@ -21,7 +26,7 @@ export default function MagicPricesPage() {
 		const setCode = search.substring(0, 3);
 		const cardNumber = search.substring(3).trim();
 
-		SetMagicCardBase({ setCode, cardNumber });
+		void navigate(`/magic-prices/${setCode}/${cardNumber}`);
 	};
 
 	return (
@@ -29,12 +34,12 @@ export default function MagicPricesPage() {
 			<Helmet>
 				<title>Magic Prices - Sy_nc</title>
 			</Helmet>
-			<form action={onFormSubmit} className="p-3">
+			<form className="p-3" onSubmit={onFormSubmit}>
 				<div className="w-full flex flex-row gap-2 rounded-xl bg-neutral-600">
 					<input
 						autoComplete="off"
 						className="py-3 px-6 text-xl placeholder-neutral-400 focus:outline-none text-white flex-grow"
-						name="search"
+						name="searchInput"
 						placeholder="Search"
 					/>
 					<button
