@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 
-import ScryfallError from "@/types/errors/ScryfallError";
+import ScryfallError, {
+	ScryfallErrorSchema,
+} from "@/types/errors/ScryfallError";
 import ScryfallCard, { ScryfallCardSchema } from "@/types/ScryfallCard";
-import { syZodFetch, SyFetchError } from "@/utils/SyFetch";
+import { SyFetchError, syZodFetchWithError } from "@/utils/SyFetch";
 
 export default function MagicCard({
 	magicCardBase,
@@ -25,24 +27,17 @@ export default function MagicCard({
 			if (!magicCardBase)
 				throw new Error("Set code and card number are null");
 
-			const [fetchError, response] = await syZodFetch(
-				`https://api.scryfall.com/cards/${magicCardBase.setCode}/${magicCardBase.cardNumber.toString()}`,
-				ScryfallCardSchema
-			);
+			const [fetchError, errorResponse, response] =
+				await syZodFetchWithError(
+					`https://api.scryfall.com/cards/${magicCardBase.setCode}/${magicCardBase.cardNumber.toString()}`,
+					ScryfallCardSchema,
+					ScryfallErrorSchema
+				);
 
-			if (fetchError) {
-				if (fetchError instanceof SyFetchError) {
-					const [parseError, scryfallError] = ScryfallError.safeParse(
-						fetchError.json
-					);
-					if (!parseError) throw scryfallError;
-				}
-				throw fetchError;
-			}
+			if (fetchError) throw fetchError;
+			if (errorResponse) throw new ScryfallError(errorResponse);
 
-			const [parseError, scryfallCard] = ScryfallCard.safeParse(response);
-			if (parseError) throw parseError;
-			return scryfallCard;
+			return new ScryfallCard(response);
 		},
 	});
 

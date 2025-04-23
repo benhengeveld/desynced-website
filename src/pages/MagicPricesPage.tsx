@@ -26,7 +26,9 @@ export default function MagicPricesPage() {
 		const setCode = search.substring(0, 3);
 		const cardNumber = search.substring(3).trim();
 
-		void navigate(`/magic-prices/${setCode}/${cardNumber}`);
+		void navigate(
+			`/magic-prices/${encodeURIComponent(setCode)}/${encodeURIComponent(cardNumber)}`
+		);
 	};
 
 	return (

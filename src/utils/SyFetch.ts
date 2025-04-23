@@ -58,6 +58,48 @@ export async function syZodFetch<T extends ZodType>(
 	}
 }
 
+export async function syZodFetchWithError<
+	TResult extends ZodType,
+	TErrorResult extends ZodType,
+>(
+	input: string | URL | globalThis.Request,
+	resultZodType: TResult,
+	errorResultZodType: TErrorResult,
+	init?: RequestInit
+): Promise<
+	| readonly [SyFetchError, null, null]
+	| readonly [z.ZodError, null, null]
+	| readonly [Error, null, null]
+	| readonly [null, z.infer<TErrorResult>, null]
+	| readonly [null, null, z.infer<TResult>]
+> {
+	try {
+		const [fetchError, response] = await syFetch(input, init); // readonly [null, z.infer<TErrorResult>, null]
+		if (fetchError) {
+			if (fetchError instanceof SyFetchError) {
+				const parseResult = errorResultZodType.safeParse(
+					fetchError.json
+				);
+				if (parseResult.success)
+					return [
+						null,
+						parseResult.data as z.infer<TErrorResult>,
+						null,
+					] as const;
+			}
+			return [fetchError, null, null] as const;
+		}
+
+		const parseResult = resultZodType.safeParse(response);
+		if (!parseResult.success)
+			return [parseResult.error, null, null] as const;
+
+		return [null, null, parseResult.data as z.infer<TResult>] as const;
+	} catch (error) {
+		return [error as Error, null, null] as const;
+	}
+}
+
 export class SyFetchError extends Error {
 	status: number;
 	text: string | null;
