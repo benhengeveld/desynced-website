@@ -29,7 +29,7 @@ export default function MagicCard({
 
 			const [fetchError, errorResponse, response] =
 				await syZodFetchWithError(
-					`https://api.scryfall.com/cards/${magicCardBase.setCode}/${magicCardBase.cardNumber.toString()}`,
+					`https://api.scryfall.com/cards/${magicCardBase.setCode}/${magicCardBase.cardNumber}`,
 					ScryfallCardSchema,
 					ScryfallErrorSchema
 				);
@@ -61,7 +61,7 @@ export default function MagicCard({
 	if (error) {
 		const errorMessages: string[] = [];
 		if (error instanceof z.ZodError) {
-			for (const zodError of error.errors) {
+			for (const zodError of error.issues) {
 				errorMessages.push(
 					`${zodError.path.join(".")}: ${zodError.message}`
 				);

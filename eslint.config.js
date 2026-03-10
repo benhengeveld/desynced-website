@@ -98,10 +98,6 @@ export default defineConfig([
 		rules: {
 			"react/react-in-jsx-scope": "off",
 			"react/prop-types": "off",
-			"react/jsx-filename-extension": [
-				"error",
-				{ extensions: [".jsx", ".tsx"] },
-			],
 			"react/jsx-sort-props": [
 				"warn",
 				{
