@@ -2,7 +2,7 @@
 	<div class="crt pointer-events-none absolute inset-0 z-10"></div>
 	<img
 		alt="Background"
-		class="absolute inset-0 h-full w-full blur"
+		class="pointer-events-none absolute inset-0 h-full w-full blur"
 		src="https://i.imgur.com/1Y1gIXy.jpg"
 	/>
 	<h1
