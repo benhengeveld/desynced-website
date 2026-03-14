@@ -1,20 +1,20 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const ScryfallErrorSchema = z.object({
 	object: z.string(),
 	code: z.string(),
 	status: z.number(),
-	details: z.string(),
+	details: z.string()
 });
 
-export default class ScryfallError extends Error {
+export class ScryfallError extends Error {
 	object: string;
 	code: string;
 	status: number;
 
 	constructor(data: z.infer<typeof ScryfallErrorSchema>) {
 		super(data.details);
-		this.name = "ScryfallError";
+		this.name = 'ScryfallError';
 		this.object = data.object;
 		this.code = data.code;
 		this.status = data.status;

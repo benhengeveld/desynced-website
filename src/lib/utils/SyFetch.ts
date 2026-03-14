@@ -1,11 +1,9 @@
-import type { z, ZodType } from "zod";
+import type { z, ZodType } from 'zod';
 
 export async function syFetch<T = object>(
 	input: string | URL | globalThis.Request,
 	init?: RequestInit
-): Promise<
-	readonly [SyFetchError, null] | readonly [Error, null] | readonly [null, T]
-> {
+): Promise<readonly [SyFetchError, null] | readonly [Error, null] | readonly [null, T]> {
 	try {
 		const response = await fetch(input, init);
 
@@ -20,7 +18,7 @@ export async function syFetch<T = object>(
 			}
 
 			const syFetchError = new SyFetchError(
-				"Network response was not ok",
+				'Network response was not ok',
 				response.status,
 				text,
 				json
@@ -58,10 +56,7 @@ export async function syZodFetch<T extends ZodType>(
 	}
 }
 
-export async function syZodFetchWithError<
-	TResult extends ZodType,
-	TErrorResult extends ZodType,
->(
+export async function syZodFetchWithError<TResult extends ZodType, TErrorResult extends ZodType>(
 	input: string | URL | globalThis.Request,
 	resultZodType: TResult,
 	errorResultZodType: TErrorResult,
@@ -77,22 +72,15 @@ export async function syZodFetchWithError<
 		const [fetchError, response] = await syFetch(input, init); // readonly [null, z.infer<TErrorResult>, null]
 		if (fetchError) {
 			if (fetchError instanceof SyFetchError) {
-				const parseResult = errorResultZodType.safeParse(
-					fetchError.json
-				);
+				const parseResult = errorResultZodType.safeParse(fetchError.json);
 				if (parseResult.success)
-					return [
-						null,
-						parseResult.data as z.infer<TErrorResult>,
-						null,
-					] as const;
+					return [null, parseResult.data as z.infer<TErrorResult>, null] as const;
 			}
 			return [fetchError, null, null] as const;
 		}
 
 		const parseResult = resultZodType.safeParse(response);
-		if (!parseResult.success)
-			return [parseResult.error, null, null] as const;
+		if (!parseResult.success) return [parseResult.error, null, null] as const;
 
 		return [null, null, parseResult.data as z.infer<TResult>] as const;
 	} catch (error) {
@@ -105,14 +93,9 @@ export class SyFetchError extends Error {
 	text: string | null;
 	json: object | null;
 
-	constructor(
-		message: string,
-		status: number,
-		text: string | null,
-		json: object | null
-	) {
+	constructor(message: string, status: number, text: string | null, json: object | null) {
 		super(message);
-		this.name = "SyFetchError";
+		this.name = 'SyFetchError';
 		this.status = status;
 		this.text = text;
 		this.json = json;

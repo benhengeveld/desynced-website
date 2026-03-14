@@ -1,19 +1,19 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const ImageUrisSchema = z.object({
 	small: z.string(),
 	normal: z.string(),
-	large: z.string(),
+	large: z.string()
 });
 
 const CardFaceSchema = z.object({
-	image_uris: ImageUrisSchema.optional(),
+	image_uris: ImageUrisSchema.optional()
 });
 
 const PricesSchema = z.object({
 	usd: z.string().nullable(),
 	usd_foil: z.string().nullable(),
-	usd_etched: z.string().nullable(),
+	usd_etched: z.string().nullable()
 });
 
 export const ScryfallCardSchema = z.object({
@@ -23,10 +23,10 @@ export const ScryfallCardSchema = z.object({
 	set_name: z.string(),
 	image_uris: ImageUrisSchema.optional(),
 	card_faces: z.array(CardFaceSchema).optional(),
-	prices: PricesSchema,
+	prices: PricesSchema
 });
 
-export default class ScryfallCard {
+export class ScryfallCard {
 	id: string;
 	name: string;
 	scryfall_uri: string;
@@ -50,25 +50,25 @@ export default class ScryfallCard {
 	};
 
 	get front_image_uris() {
-		if (this.image_uris) return this.image_uris;
-		if (
-			this.card_faces &&
-			this.card_faces.length >= 1 &&
-			this.card_faces[0].image_uris
-		)
+		if (this.image_uris) {
+			return this.image_uris;
+		}
+
+		if (this.card_faces && this.card_faces.length >= 1 && this.card_faces[0].image_uris) {
 			return this.card_faces[0].image_uris;
+		}
 
 		return null;
 	}
 
 	get back_image_uris() {
-		if (this.image_uris) return null;
-		if (
-			this.card_faces &&
-			this.card_faces.length >= 2 &&
-			this.card_faces[1].image_uris
-		)
+		if (this.image_uris) {
+			return null;
+		}
+
+		if (this.card_faces && this.card_faces.length >= 2 && this.card_faces[1].image_uris) {
 			return this.card_faces[1].image_uris;
+		}
 
 		return null;
 	}
