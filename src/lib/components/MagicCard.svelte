@@ -1,13 +1,11 @@
 <script lang="ts">
+	import type { MagicCardBase } from '$lib/models/MagicCardBase';
 	import { createQuery } from '@tanstack/svelte-query';
 
 	const {
 		magicCardBase
 	}: {
-		magicCardBase: {
-			setCode: string;
-			cardNumber: string;
-		} | null;
+		magicCardBase: MagicCardBase | null;
 	} = $props();
 
 	const magicCardQuery = createQuery(() => ({
