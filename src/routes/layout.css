@@ -1,1 +1,21 @@
 @import 'tailwindcss';
+
+@theme {
+	--font-display: Inter, sans-serif;
+	--spacing-navbar: --spacing(14);
+}
+
+@layer base {
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		min-width: 0;
+		line-height: 1;
+	}
+
+	:root {
+		@apply bg-neutral-800 font-display text-white;
+		scrollbar-color: var(--color-neutral-500) transparent;
+	}
+}
