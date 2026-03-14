@@ -7,7 +7,7 @@ export const ScryfallErrorSchema = z.object({
 	details: z.string()
 });
 
-export default class ScryfallError extends Error {
+export class ScryfallError extends Error {
 	object: string;
 	code: string;
 	status: number;

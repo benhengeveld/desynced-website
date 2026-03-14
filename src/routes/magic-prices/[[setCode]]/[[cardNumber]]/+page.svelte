@@ -52,6 +52,8 @@
 				placeholder="Search"
 				name="searchInput"
 			/>
+			<!-- TODO: Show an example of the search input -->
+
 			<button
 				aria-label="Search"
 				class="flex w-12 cursor-pointer flex-col items-center justify-center rounded-full text-xl"

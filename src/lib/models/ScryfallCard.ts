@@ -26,7 +26,7 @@ export const ScryfallCardSchema = z.object({
 	prices: PricesSchema
 });
 
-export default class ScryfallCard {
+export class ScryfallCard {
 	id: string;
 	name: string;
 	scryfall_uri: string;
