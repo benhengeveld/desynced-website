@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Sy_nc</title>
+</svelte:head>
+
 <div class="fixed inset-0 bg-black">
 	<div class="crt pointer-events-none absolute inset-0 z-10"></div>
 	<img
