@@ -1,6 +1,12 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - cookie@0.7.0
 onlyBuiltDependencies:
   - esbuild
   - sharp
   - workerd
 overrides:
-  cookie@<0.7.0: '>=0.7.0'
+  cookie@<0.7.0: ^0.7.0
