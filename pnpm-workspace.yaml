@@ -3,6 +3,10 @@ allowBuilds:
   sharp: true
   workerd: true
 minimumReleaseAgeExclude:
+  - svelte-check@4.7.3
+  - miniflare@4.20260710.0
+  - prettier-plugin-tailwindcss@0.8.1
+  - wrangler@4.111.0
   - cookie@0.7.0
 onlyBuiltDependencies:
   - esbuild
