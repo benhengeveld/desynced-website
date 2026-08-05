@@ -8,9 +8,11 @@ minimumReleaseAgeExclude:
   - prettier-plugin-tailwindcss@0.8.1
   - wrangler@4.111.0
   - cookie@0.7.0
+  - undici@7.29.0
 onlyBuiltDependencies:
   - esbuild
   - sharp
   - workerd
 overrides:
   cookie@<0.7.0: ^0.7.0
+  undici@>=7.0.0 <7.29.0: ^7.29.0
