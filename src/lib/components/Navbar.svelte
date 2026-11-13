@@ -2,8 +2,8 @@
 	import { resolve } from '$app/paths';
 
 	const navItems = [
-		{ id: 1, href: '/', label: 'Home' },
-		{ id: 2, href: '/magic-prices', label: 'Magic Prices' }
+		{ id: 1, href: resolve('/'), label: 'Home' },
+		{ id: 2, href: resolve('magic-prices'), label: 'Magic Prices' }
 	] as const;
 </script>
 
@@ -19,7 +19,7 @@
 	<nav class="flex h-full flex-row items-center">
 		{#each navItems as navItem (navItem.id)}
 			<a
-				href={resolve(navItem.href)}
+				href={navItem.href}
 				class="flex h-full min-w-16 flex-row items-center rounded px-2 font-medium hover:bg-white/10"
 			>
 				{navItem.label}

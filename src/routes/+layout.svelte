@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
-	import Navbar from '$lib/components/Navbar.svelte';
+	import Navbar from '#lib/components/Navbar.svelte';
 
 	import './layout.css';
-	import '$lib/assets/styles/crt.css';
-	import favicon from '$lib/assets/svgs/favicon.ico';
+	import '#lib/assets/styles/crt.css';
+	import favicon from '#lib/assets/svgs/favicon.ico';
 
 	let { children } = $props();
 
