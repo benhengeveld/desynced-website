@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { MagicCardBase } from '$lib/models/MagicCardBase';
+	import type { MagicCardBase } from '#lib/models/MagicCardBase.ts';
 	import { createQuery } from '@tanstack/svelte-query';
-	import { syZodFetchWithError } from '$lib/utils/SyFetch';
-	import { ScryfallCard, ScryfallCardSchema } from '$lib/models/ScryfallCard';
-	import { ScryfallError, ScryfallErrorSchema } from '$lib/models/ScryfallError';
+	import { syZodFetchWithError } from '#lib/utils/SyFetch.ts';
+	import { ScryfallCard, ScryfallCardSchema } from '#lib/models/ScryfallCard.ts';
+	import { ScryfallError, ScryfallErrorSchema } from '#lib/models/ScryfallError.ts';
 
 	const {
 		magicCardBase

@@ -1,5 +1,5 @@
 <script>
-	import CromaticText from '$lib/components/CromaticText.svelte';
+	import CromaticText from '#lib/components/CromaticText.svelte';
 </script>
 
 <svelte:head>
