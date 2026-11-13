@@ -17,30 +17,30 @@
 	"devDependencies": {
 		"@eslint/compat": "^2.1.1",
 		"@eslint/js": "^10.0.1",
-		"@sveltejs/adapter-cloudflare": "^7.2.9",
-		"@sveltejs/kit": "^2.70.3",
+		"@sveltejs/adapter-cloudflare": "^7.2.10",
+		"@sveltejs/kit": "^2.70.4",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
-		"@tailwindcss/vite": "^4.3.3",
-		"@types/node": "^26.6.4",
-		"eslint": "^10.12.0",
+		"@tailwindcss/vite": "^4.3.5",
+		"@types/node": "^26.6.6",
+		"eslint": "^10.14.0",
 		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-svelte": "^3.23.0",
-		"globals": "^17.13.0",
-		"prettier": "^3.9.9",
+		"eslint-plugin-svelte": "^3.24.1",
+		"globals": "^17.14.0",
+		"prettier": "^3.10.1",
 		"prettier-plugin-svelte": "^4.1.1",
 		"prettier-plugin-tailwindcss": "^0.8.1",
-		"svelte": "^5.57.1",
-		"svelte-check": "^4.7.6",
-		"tailwindcss": "^4.3.3",
+		"svelte": "^5.57.3",
+		"svelte-check": "^4.7.8",
+		"tailwindcss": "^4.3.5",
 		"typescript": "^6.0.3",
-		"typescript-eslint": "^8.71.1",
-		"vite": "^7.3.6",
-		"vite-plugin-devtools-json": "^1.1.0",
-		"wrangler": "^4.147.0"
+		"typescript-eslint": "^8.72.2",
+		"vite": "^7.3.8",
+		"vite-plugin-devtools-json": "^1.1.2",
+		"wrangler": "^4.161.0"
 	},
 	"dependencies": {
-		"@tanstack/svelte-query": "^6.3.1",
-		"zod": "^4.6.5"
+		"@tanstack/svelte-query": "^6.4.1",
+		"zod": "^4.6.7"
 	},
 	"packageManager": "pnpm@12.9.1+sha512.06b055fff5cd20dc12781de173ced3310ce0951bf2ec620211a16045d5444d5c93a663210764ef29a653a610459ba0368f0e74f84d80c54723cf95aae7bc0d6d"
 }
